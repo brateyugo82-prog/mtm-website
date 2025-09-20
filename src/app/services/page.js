@@ -1,4 +1,3 @@
-"use client";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -8,13 +7,35 @@ import {
   TrashIcon,
 } from "@heroicons/react/24/outline";
 
+export const metadata = {
+  title: "Leistungen – MTM Möbel Transport Montage Hannover",
+  description:
+    "Unsere Leistungen: Möbeltransport, Umzüge, Montage sowie Entrümpelung & Entsorgung in Hannover. Professionell, zuverlässig & fair.",
+  keywords: [
+    "Umzug Hannover",
+    "Möbeltransport Hannover",
+    "Montage Hannover",
+    "Entrümpelung Hannover",
+    "Möbelaufbau Hannover",
+  ],
+  openGraph: {
+    title: "Unsere Leistungen – MTM Möbel Transport Montage Hannover",
+    description:
+      "Von Möbeltransport bis Entrümpelung – MTM Hannover bietet professionelle Leistungen rund um Transport, Montage & Umzug.",
+    url: "https://mtm-service.de/services",
+    siteName: "MTM Möbel Transport Montage",
+    locale: "de_DE",
+    type: "website",
+  },
+};
+
 export default function ServicesPage() {
   return (
     <main className="bg-white text-gray-900">
       {/* Header-Bild */}
       <section className="relative h-[400px] md:h-[500px]">
         <Image
-          src="/header-services.svg" // eigenes Bild im public-Ordner
+          src="/header-services.svg"
           alt="MTM Leistungen"
           fill
           priority
@@ -35,72 +56,110 @@ export default function ServicesPage() {
       </div>
 
       {/* Leistungen Section */}
-      <section className="py-16 px-6 max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-10">
-          {/* Transport */}
-          <Link
-            href="/services/transport"
-            className="bg-gray-50 rounded-2xl shadow-md p-10 hover:shadow-2xl hover:bg-red-50 transition block"
-          >
+      <section className="py-16 px-6 max-w-6xl mx-auto space-y-20">
+        {/* Transport */}
+        <Link
+          href="/services/transport"
+          className="grid md:grid-cols-2 items-center gap-10 bg-gray-50 rounded-2xl shadow-md p-10 hover:shadow-2xl hover:bg-red-50 transition"
+        >
+          <div>
             <TruckIcon className="h-12 w-12 text-red-600 mb-6" />
             <h2 className="text-2xl font-semibold mb-4 text-gray-900">
               Transport
             </h2>
             <p className="text-gray-700 leading-relaxed">
-              Wir sorgen für schnellen und sicheren Möbeltransport – in ganz
-              Norddeutschland. Ihre Möbel und Objekte werden von uns mit
-              höchster Sorgfalt behandelt und termingerecht geliefert.
+              Sicherer Möbeltransport in Hannover & Norddeutschland. Mit
+              moderner Ausstattung, erfahrenem Team und höchster Sorgfalt
+              bringen wir Ihre Möbel termingerecht ans Ziel.
             </p>
-          </Link>
+          </div>
+          <div className="relative w-full h-64 md:h-80">
+            <Image
+              src="/services/transport.jpg"
+              alt="Möbeltransport Hannover"
+              fill
+              className="object-cover rounded-xl"
+            />
+          </div>
+        </Link>
 
-          {/* Montage */}
-          <Link
-            href="/services/montage"
-            className="bg-gray-50 rounded-2xl shadow-md p-10 hover:shadow-2xl hover:bg-red-50 transition block"
-          >
+        {/* Montage */}
+        <Link
+          href="/services/montage"
+          className="grid md:grid-cols-2 items-center gap-10 bg-gray-50 rounded-2xl shadow-md p-10 hover:shadow-2xl hover:bg-red-50 transition"
+        >
+          <div>
             <WrenchIcon className="h-12 w-12 text-red-600 mb-6" />
             <h2 className="text-2xl font-semibold mb-4 text-gray-900">
               Montage
             </h2>
             <p className="text-gray-700 leading-relaxed">
-              Fachgerechter Auf- und Abbau von Möbeln aller Art. Ob
-              Privatwohnung oder Büro – wir übernehmen die Montage effizient
-              und zuverlässig, inklusive professionellem Werkzeug.
+              Fachgerechter Auf- und Abbau von Möbeln aller Hersteller. MTM
+              sorgt für präzise, schnelle und saubere Möbelmontage – ob Küche,
+              Schlafzimmer oder Büroeinrichtung.
             </p>
-          </Link>
+          </div>
+          <div className="relative w-full h-64 md:h-80">
+            <Image
+              src="/services/montage.jpg"
+              alt="Möbelmontage Hannover"
+              fill
+              className="object-cover rounded-xl"
+            />
+          </div>
+        </Link>
 
-          {/* Umzüge */}
-          <Link
-            href="/services/umzuege"
-            className="bg-gray-50 rounded-2xl shadow-md p-10 hover:shadow-2xl hover:bg-red-50 transition block"
-          >
+        {/* Umzüge */}
+        <Link
+          href="/services/umzuege"
+          className="grid md:grid-cols-2 items-center gap-10 bg-gray-50 rounded-2xl shadow-md p-10 hover:shadow-2xl hover:bg-red-50 transition"
+        >
+          <div>
             <HomeModernIcon className="h-12 w-12 text-red-600 mb-6" />
             <h2 className="text-2xl font-semibold mb-4 text-gray-900">
               Umzüge
             </h2>
             <p className="text-gray-700 leading-relaxed">
-              Komplettlösungen für Privat- und Firmenumzüge. Von der Planung
-              über Verpackung bis zum Transport – wir übernehmen alles,
-              damit Ihr Umzug stressfrei und reibungslos verläuft.
+              Stressfreie Umzüge in Hannover: Von Planung über Verpackung
+              bis Transport – MTM übernimmt alles für Privat- und
+              Firmenumzüge, zuverlässig und termingerecht.
             </p>
-          </Link>
+          </div>
+          <div className="relative w-full h-64 md:h-80">
+            <Image
+              src="/services/umzuege.jpg"
+              alt="Umzüge Hannover"
+              fill
+              className="object-cover rounded-xl"
+            />
+          </div>
+        </Link>
 
-          {/* Entrümpelung & Entsorgung */}
-          <Link
-            href="/services/entruempelung"
-            className="bg-gray-50 rounded-2xl shadow-md p-10 hover:shadow-2xl hover:bg-red-50 transition block"
-          >
+        {/* Entrümpelung */}
+        <Link
+          href="/services/entruempelung"
+          className="grid md:grid-cols-2 items-center gap-10 bg-gray-50 rounded-2xl shadow-md p-10 hover:shadow-2xl hover:bg-red-50 transition"
+        >
+          <div>
             <TrashIcon className="h-12 w-12 text-red-600 mb-6" />
             <h2 className="text-2xl font-semibold mb-4 text-gray-900">
               Entrümpelung & Entsorgung
             </h2>
             <p className="text-gray-700 leading-relaxed">
-              Wir übernehmen Entrümpelungen und kümmern uns um die
-              fachgerechte, umweltfreundliche Entsorgung. Sauber,
-              effizient und ohne Aufwand für Sie.
+              Gründliche Entrümpelung & umweltgerechte Entsorgung in Hannover.
+              Diskret, effizient und besenrein – vom Keller bis zur
+              kompletten Haushaltsauflösung.
             </p>
-          </Link>
-        </div>
+          </div>
+          <div className="relative w-full h-64 md:h-80">
+            <Image
+              src="/services/entruempelung.jpg"
+              alt="Entrümpelung Hannover"
+              fill
+              className="object-cover rounded-xl"
+            />
+          </div>
+        </Link>
       </section>
     </main>
   );

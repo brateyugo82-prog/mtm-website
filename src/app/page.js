@@ -1,13 +1,49 @@
-"use client";
 import HeroSection from "../components/HeroSection";
 import TestimonialsSection from "../components/TestimonialsSection";
-import { TruckIcon, WrenchIcon, HomeModernIcon } from "@heroicons/react/24/outline";
+import { TruckIcon, WrenchIcon, HomeModernIcon, TrashIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
+
+export const metadata = {
+  title: "MTM Möbel Transport Montage Hannover | Umzüge, Transport & Montage",
+  description:
+    "MTM Hannover – Ihre Profis für Möbeltransporte, Umzüge, Montage und Entrümpelungen. Schnell, zuverlässig und fair in Hannover & Norddeutschland.",
+  keywords: [
+    "Umzug Hannover",
+    "Möbeltransport Hannover",
+    "Möbelmontage Hannover",
+    "Entrümpelung Hannover",
+    "Umzugsfirma Hannover",
+  ],
+  openGraph: {
+    title: "MTM Möbel Transport Montage Hannover",
+    description:
+      "Ihr zuverlässiger Partner für Umzüge, Möbeltransporte, Montage & Entrümpelungen in Hannover.",
+    url: "https://mtm-service.de",
+    siteName: "MTM Möbel Transport Montage",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "MTM Möbel Transport Montage – Hannover",
+      },
+    ],
+    locale: "de_DE",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MTM Möbel Transport Montage Hannover",
+    description:
+      "Umzüge, Möbeltransporte, Montage & Entrümpelungen in Hannover – fair, effizient & zuverlässig.",
+    images: ["/og-image.jpg"],
+  },
+};
 
 export default function HomePage() {
   return (
     <main className="bg-gray-50">
-      {/* HeroSection nur EINMAL */}
+      {/* HeroSection */}
       <HeroSection />
 
       {/* Leistungen Section */}
@@ -15,7 +51,7 @@ export default function HomePage() {
         <h2 className="text-3xl md:text-4xl font-bold mb-16 text-gray-900">
           Unsere Leistungen
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto px-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 max-w-6xl mx-auto px-6">
           {/* Transport */}
           <Link
             href="/services/transport"
@@ -49,6 +85,20 @@ export default function HomePage() {
             <h3 className="text-2xl font-semibold mb-4 text-gray-900">Umzüge</h3>
             <p className="text-gray-600">
               Komplettlösungen für Privat und Gewerbe – stressfrei & professionell organisiert.
+            </p>
+          </Link>
+
+          {/* Entrümpelungen */}
+          <Link
+            href="/services/entruempelung"
+            className="bg-gray-50 rounded-2xl shadow-md p-10 hover:shadow-2xl hover:bg-red-50 transition block"
+          >
+            <TrashIcon className="h-12 w-12 mx-auto text-red-600 mb-6" />
+            <h3 className="text-2xl font-semibold mb-4 text-gray-900">
+              Entrümpelungen & Entsorgungen
+            </h3>
+            <p className="text-gray-600">
+              Fachgerechte Entrümpelung und umweltbewusste Entsorgung – schnell, sauber und zuverlässig.
             </p>
           </Link>
         </div>
