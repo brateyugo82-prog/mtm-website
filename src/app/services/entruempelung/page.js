@@ -74,7 +74,7 @@ export default function EntruempelungPage() {
           {/* Bild rechts */}
           <div className="relative w-full h-80 md:h-[500px]">
             <Image
-              src="/services/entruempelung2.png"
+              src="/services/entruempelung-hannover.png"
               alt="MTM Mitarbeiter bei Entrümpelung"
               fill
               priority
