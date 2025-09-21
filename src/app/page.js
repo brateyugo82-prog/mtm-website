@@ -1,6 +1,6 @@
 import HeroSection from "../components/HeroSection";
 import TestimonialsSection from "../components/TestimonialsSection";
-import { TruckIcon, WrenchIcon, HomeModernIcon, TrashIcon } from "@heroicons/react/24/outline";
+import { TruckIcon, WrenchIcon, HomeModernIcon, TrashIcon, PhoneIcon, UserIcon, DocumentTextIcon, CalendarDaysIcon, CheckBadgeIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
 export const metadata = {
@@ -100,6 +100,47 @@ export default function HomePage() {
             <p className="text-gray-600">
               Fachgerechte Entrümpelung und umweltbewusste Entsorgung – schnell, sauber und zuverlässig.
             </p>
+          </Link>
+        </div>
+      </section>
+
+      {/* Ablauf Teaser Section */}
+      <section className="py-24 bg-gray-100 text-center">
+        <h2 className="text-3xl md:text-4xl font-bold mb-16 text-gray-900">
+          Unser Ablauf – Schritt für Schritt
+        </h2>
+        <div className="flex flex-col md:flex-row justify-center items-center gap-8 max-w-6xl mx-auto px-6">
+          <div className="flex flex-col items-center">
+            <PhoneIcon className="h-12 w-12 text-red-600 mb-4" />
+            <p className="text-gray-700 font-semibold">1. Anruf</p>
+          </div>
+          <span className="text-red-600 text-3xl">➝</span>
+          <div className="flex flex-col items-center">
+            <UserIcon className="h-12 w-12 text-red-600 mb-4" />
+            <p className="text-gray-700 font-semibold">2. Besichtigung</p>
+          </div>
+          <span className="text-red-600 text-3xl">➝</span>
+          <div className="flex flex-col items-center">
+            <DocumentTextIcon className="h-12 w-12 text-red-600 mb-4" />
+            <p className="text-gray-700 font-semibold">3. Angebot</p>
+          </div>
+          <span className="text-red-600 text-3xl">➝</span>
+          <div className="flex flex-col items-center">
+            <CalendarDaysIcon className="h-12 w-12 text-red-600 mb-4" />
+            <p className="text-gray-700 font-semibold">4. Termin</p>
+          </div>
+          <span className="text-red-600 text-3xl">➝</span>
+          <div className="flex flex-col items-center">
+            <CheckBadgeIcon className="h-12 w-12 text-red-600 mb-4" />
+            <p className="text-gray-700 font-semibold">5. Durchführung</p>
+          </div>
+        </div>
+        <div className="mt-10">
+          <Link
+            href="/ablauf"
+            className="text-red-600 font-semibold hover:underline"
+          >
+            Mehr erfahren
           </Link>
         </div>
       </section>
