@@ -1,4 +1,4 @@
-# *
+# Allgemeine Regeln
 User-agent: *
 Allow: /
 
@@ -7,7 +7,7 @@ User-agent: Googlebot
 Allow: /
 
 # Host
-Host: https://mtm-service.de
+Host: mtm-service.de
 
-# Sitemaps
+# Sitemap
 Sitemap: https://mtm-service.de/sitemap.xml
