@@ -43,7 +43,7 @@ export default function TransportPage() {
               <strong>MTM Möbel Transport Montage aus Hannover</strong> ist Ihr
               zuverlässiger Partner, wenn es um professionelle Transporte von
               Möbeln, Hausrat oder sperrigen Objekten geht. Ob innerhalb
-              Hannovers, in der Region oder bundesweit – wir sorgen für eine
+              Hannovers oder in der Region – wir sorgen für eine
               reibungslose, sichere und faire Durchführung Ihres Transports.
             </p>
 
@@ -104,8 +104,8 @@ export default function TransportPage() {
             wie Antiquitäten oder Glas.
           </li>
           <li>
-            <strong>Regionale & überregionale Transporte:</strong> Hannover,
-            Norddeutschland & deutschlandweit.
+            <strong>Regionale Transporte:</strong> Hannover &
+            Norddeutschland 
           </li>
         </ul>
 

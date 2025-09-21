@@ -53,7 +53,7 @@ const blogPosts = [
 export default function BlogOverviewPage() {
   return (
     <main className="bg-white min-h-screen">
-      {/* Header-Bild - größer gemacht */}
+      {/* Header-Bild */}
       <div className="relative w-full h-[500px]">
         <Image
           src="/header-blog.png"
@@ -61,6 +61,17 @@ export default function BlogOverviewPage() {
           fill
           className="object-cover"
         />
+      </div>
+
+      {/* Überschrift */}
+      <div className="text-center py-10">
+        <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900">
+          MTM Blog
+        </h1>
+        <p className="mt-4 text-lg text-gray-700 max-w-2xl mx-auto">
+          Hilfreiche Tipps und Infos rund um Umzug, Möbeltransport & Montage
+          in Hannover und Umgebung.
+        </p>
       </div>
 
       {/* Inhalt kompakter */}

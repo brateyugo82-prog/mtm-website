@@ -45,7 +45,7 @@ export default function ServicesPage() {
 
       {/* Überschrift */}
       <div className="text-center py-12">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-red-600">
+        <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900">
           Unsere Leistungen
         </h1>
         <p className="mt-4 text-lg text-gray-700 max-w-2xl mx-auto">

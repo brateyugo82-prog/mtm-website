@@ -51,15 +51,15 @@ export default function MontagePage() {
               <li>
                 <strong>Erfahrene Monteure:</strong> Unser Team kennt die Systeme
                 aller gängigen Möbelhersteller (IKEA, Höffner, Poco,
-                Küchenstudios u. v. m.).
+                Mömax u. v. m.).
               </li>
               <li>
                 <strong>Professionelles Werkzeug:</strong> Präzise Montage mit
                 modernem Equipment.
               </li>
               <li>
-                <strong>Flexibilität:</strong> Von einzelnen Möbelstücken bis zu
-                kompletten Küchen oder Büroeinrichtungen.
+                <strong>Flexibilität:</strong> Von einzelnen Möbelstücken bis hin zu
+                kompletten Büroeinrichtungen.
               </li>
               <li>
                 <strong>Schnelligkeit & Effizienz:</strong> Wir sparen Ihnen Zeit
@@ -93,7 +93,7 @@ export default function MontagePage() {
         <ul className="list-disc list-inside text-gray-700 space-y-2">
           <li>
             <strong>Privathaushalte:</strong> Aufbau von Betten, Schränken,
-            Regalen, Küchen oder kompletten Möbelsets.
+            Regalen oder kompletten Möbelsets.
           </li>
           <li>
             <strong>Büros & Unternehmen:</strong> Montage von Schreibtischen,

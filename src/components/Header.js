@@ -22,6 +22,7 @@ export default function Header() {
         <ul className="flex space-x-14 text-white font-medium">
           <li><Link href="/about" className="hover:text-red-400">Über uns</Link></li>
           <li><Link href="/services" className="hover:text-red-400">Leistungen</Link></li>
+          <li><Link href="/ablauf" className="hover:text-red-400">Ablauf</Link></li>
           <li><Link href="/blog" className="hover:text-red-400">Blog</Link></li>
           <li><Link href="/contact" className="hover:text-red-400">Kontakt</Link></li>
         </ul>
