@@ -76,7 +76,7 @@ export default function UmzuegePage() {
           {/* Bild rechts */}
           <div className="relative w-full h-80 md:h-[500px]">
             <Image
-              src="/services/umzuege1.png"
+              src="/services/umzuege-hannover.png"
               alt="MTM Mitarbeiter tragen Kartons"
               fill
               priority

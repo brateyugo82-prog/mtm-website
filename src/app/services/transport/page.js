@@ -75,7 +75,7 @@ export default function TransportPage() {
           {/* Bild rechts */}
           <div className="relative w-full h-80 md:h-[500px]">
             <Image
-              src="/services/transport2.png"
+              src="/services/transport-team.png"
               alt="MTM Möbeltransport"
               fill
               priority

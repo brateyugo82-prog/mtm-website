@@ -75,7 +75,7 @@ export default function MontagePage() {
           {/* Bild rechts */}
           <div className="relative w-full h-80 md:h-[500px]">
             <Image
-              src="/services/montage2.png"
+              src="/services/montage-hannover.png"
               alt="MTM Möbelmontage"
               fill
               priority
