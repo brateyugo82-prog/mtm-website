@@ -75,7 +75,7 @@ export default function ServicesPage() {
           </div>
           <div className="relative w-full h-64 md:h-80">
             <Image
-              src="/services/transport2.png"
+              src="/services/transport-team.png"
               alt="Möbeltransport Hannover"
               fill
               className="object-cover rounded-xl"
@@ -101,7 +101,7 @@ export default function ServicesPage() {
           </div>
           <div className="relative w-full h-64 md:h-80">
             <Image
-              src="/services/montage2.png"
+              src="/services/montage-hannover.png"
               alt="Möbelmontage Hannover"
               fill
               className="object-cover rounded-xl"
@@ -127,7 +127,7 @@ export default function ServicesPage() {
           </div>
           <div className="relative w-full h-64 md:h-80">
             <Image
-              src="/services/umzuege1.png"
+              src="/services/umzuege-hannover.png"
               alt="Umzüge Hannover"
               fill
               className="object-cover rounded-xl"
@@ -153,7 +153,7 @@ export default function ServicesPage() {
           </div>
           <div className="relative w-full h-64 md:h-80">
             <Image
-              src="/services/entruempelung2.png"
+              src="/services/entruempelung-mitarbeiter.png"
               alt="Entrümpelung Hannover"
               fill
               className="object-cover rounded-xl"
