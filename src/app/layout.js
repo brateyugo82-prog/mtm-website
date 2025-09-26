@@ -20,11 +20,11 @@ export const metadata = {
     title: "MTM Möbel Transport Montage | Umzüge & Möbeltransporte Hannover",
     description:
       "Ihr zuverlässiger Partner für Möbeltransporte, Umzüge und Montagearbeiten in Hannover.",
-    url: "https://mtm-service.de", // ✅ später echte Domain eintragen
+    url: "https://mtm-service.de",
     siteName: "MTM Möbel Transport Montage",
     images: [
       {
-        url: "/og-image.jpg", // ✅ Bild in public/ legen (1200x630 px empfohlen)
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "MTM Möbel Transport Montage – Umzug in Hannover",
@@ -39,6 +39,10 @@ export const metadata = {
     description:
       "Professionelle Möbeltransporte & Umzüge in Hannover – fair, effizient & zuverlässig.",
     images: ["/og-image.jpg"],
+  },
+  other: {
+    "tiktok-developers-site-verification":
+      "oyClOiKaBmrDRLVbZ1QHyC7I9aJLgci1",
   },
 };
 
