@@ -71,6 +71,7 @@ export default function Footer() {
           <ul className="space-y-2">
             <li><Link href="/impressum" className="hover:text-white">Impressum</Link></li>
             <li><Link href="/datenschutz" className="hover:text-white">Datenschutzerklärung</Link></li>
+            <li><Link href="/datendeletion" className="hover:text-white">Datenlöschung</Link></li>
             <li><Link href="/agb" className="hover:text-white">AGB</Link></li>
             <li><Link href="/terms" className="hover:text-white">Terms of Service</Link></li>
             <li><Link href="/privacy" className="hover:text-white">Privacy Policy</Link></li>
