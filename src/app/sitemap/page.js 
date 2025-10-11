@@ -1,0 +1,63 @@
+import Link from "next/link";
+
+export const metadata = {
+  title: "Rechtliche Informationen | MTM Möbel Transport Montage",
+  description:
+    "Alle rechtlichen Informationen von MTM Möbel Transport Montage auf einen Blick – Impressum, Datenschutz, AGB, Nutzungsbedingungen und Datenlöschung.",
+};
+
+export default function SitemapPage() {
+  return (
+    <main className="bg-[#0f172a] text-gray-100 min-h-screen">
+      <section className="max-w-4xl mx-auto px-6 pt-48 pb-20">
+        <div className="bg-white/10 backdrop-blur-md rounded-2xl p-10 shadow-lg space-y-8">
+          <h1 className="text-3xl font-bold text-red-500 mb-6">
+            Rechtliche Informationen & Sitemap
+          </h1>
+
+          <p className="text-gray-300 mb-10">
+            Hier finden Sie alle rechtlichen und datenschutzrelevanten Dokumente
+            der MTM Möbel Transport Montage auf einen Blick.
+          </p>
+
+          <ul className="space-y-4 text-lg">
+            <li>
+              <Link href="/impressum" className="text-blue-400 hover:underline">
+                📘 Impressum
+              </Link>
+            </li>
+            <li>
+              <Link href="/datenschutz" className="text-blue-400 hover:underline">
+                🔒 Datenschutzerklärung
+              </Link>
+            </li>
+            <li>
+              <Link href="/datendeletion" className="text-blue-400 hover:underline">
+                🧹 Datenlöschung (Meta / Social Media)
+              </Link>
+            </li>
+            <li>
+              <Link href="/agb" className="text-blue-400 hover:underline">
+                📄 Allgemeine Geschäftsbedingungen (AGB)
+              </Link>
+            </li>
+            <li>
+              <Link href="/terms" className="text-blue-400 hover:underline">
+                ⚙️ Nutzungsbedingungen (System)
+              </Link>
+            </li>
+            <li>
+              <Link href="/privacy" className="text-blue-400 hover:underline">
+                🤖 Datenschutz (Agentenplattform)
+              </Link>
+            </li>
+          </ul>
+
+          <p className="mt-10 text-gray-400 text-sm">
+            © {new Date().getFullYear()} MTM Möbel Transport Montage · Alle Rechte vorbehalten.
+          </p>
+        </div>
+      </section>
+    </main>
+  );
+}
