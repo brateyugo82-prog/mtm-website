@@ -31,6 +31,19 @@ export default function TestimonialsSection() {
       name: "Dr. Weber, Hannover",
       text: "Sehr professionelle Abwicklung meines Büro-Umzugs. Alles lief nach Plan, keine Schäden, keine Überraschungen – kann ich nur weiterempfehlen.",
     },
+    // 🆕 Neue Testimonials
+    {
+      name: "Familie M., Hannover",
+      text: "Noch nie lief ein Umzug so reibungslos. Das Team war pünktlich, höflich und extrem sorgfältig.",
+    },
+    {
+      name: "Zentrallogistik eines Möbelhauses (anonymisiert)",
+      text: "Endlich mal ein Dienstleister, der hält, was er verspricht. Wir arbeiten weiter mit MTM!",
+    },
+    {
+      name: "Online-Shop für Wohnaccessoires",
+      text: "Wir waren begeistert von der Expresslieferung – ein echter Gamechanger.",
+    },
   ];
 
   return (
