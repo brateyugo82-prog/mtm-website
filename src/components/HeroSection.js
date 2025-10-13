@@ -8,20 +8,25 @@ export default function HeroSection() {
   return (
     <section className="relative w-full bg-gray-900 text-white overflow-hidden">
       {/* Background Image */}
-      <div className="relative w-full h-[85vh] md:h-[90vh]">
+      <div className="relative w-full h-[100vh] md:h-[100vh]">
         <Image
-          src="/assets/hero.jpg"
-          alt="MTM Möbel Transport Montage Hannover"
+          src="/flotte.png"
+          alt="MTM Flotte – Umzugsfahrzeuge Hannover"
           fill
           priority
-          className="object-cover brightness-75"
+          // 🔆 Bild leicht heller gemacht:
+          className="object-cover brightness-90 contrast-105"
+          sizes="100vw"
         />
       </div>
 
       {/* Overlay Content */}
-      <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-6 md:px-12">
+      <div className="absolute inset-0 flex flex-col justify-end items-center text-center px-6 md:px-12 pb-[5vh] md:pb-[4vh] lg:pb-[3vh]">
+        {/* Hellerer Verlauf */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+
         <motion.h1
-          className="text-3xl sm:text-4xl md:text-6xl font-extrabold mb-4 drop-shadow-lg"
+          className="relative text-3xl sm:text-4xl md:text-6xl font-extrabold mb-4 drop-shadow-lg z-10"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -30,18 +35,17 @@ export default function HeroSection() {
         </motion.h1>
 
         <motion.p
-          className="text-base sm:text-lg md:text-xl text-gray-200 max-w-2xl mb-8 leading-relaxed"
+          className="relative text-base sm:text-lg md:text-xl text-gray-200 max-w-2xl mb-8 leading-relaxed z-10"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.2 }}
         >
-          Ihr zuverlässiger Partner für Möbeltransporte, Umzüge und Montagearbeiten
-          – professionell, effizient und fair.
+          Ihr zuverlässiger Partner für Möbeltransporte, Umzüge und Montagearbeiten –
+          professionell, effizient und fair.
         </motion.p>
 
-        {/* CTA Buttons */}
         <motion.div
-          className="flex flex-col sm:flex-row gap-4"
+          className="relative flex flex-col sm:flex-row gap-4 z-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.4 }}
@@ -61,8 +65,8 @@ export default function HeroSection() {
         </motion.div>
       </div>
 
-      {/* Bottom Fade Overlay for readability */}
-      <div className="absolute bottom-0 w-full h-24 bg-gradient-to-t from-gray-900/80 to-transparent"></div>
+      {/* Bottom Fade Overlay */}
+      <div className="absolute bottom-0 w-full h-32 bg-gradient-to-t from-gray-900/70 to-transparent"></div>
     </section>
   );
 }

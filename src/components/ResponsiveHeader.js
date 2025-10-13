@@ -22,30 +22,32 @@ export default function ResponsiveHeader() {
       {!isMobile ? (
         <Header />
       ) : (
-        <header className="fixed top-0 left-0 w-full z-50 bg-white shadow-sm">
-          <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-            <Link href="/" className="flex items-center space-x-2">
+        <header className="fixed top-0 left-0 w-full z-50 bg-white shadow-md">
+          <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
+            {/* ✅ Nur das Logo, kein Text */}
+            <Link href="/" className="flex items-center">
               <img
-                src="/assets/logo.png"
+                src="/logo.svg"
                 alt="MTM Logo"
-                className="h-10 w-auto"
+                className="h-14 w-auto sm:h-16 object-contain"
               />
-              <span className="text-lg font-bold text-gray-800">MTM</span>
             </Link>
 
+            {/* Menü Button */}
             <button
               className="md:hidden p-2 rounded-md hover:bg-gray-100 transition"
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label="Menü öffnen oder schließen"
             >
               {menuOpen ? (
-                <X className="h-6 w-6 text-gray-800" />
+                <X className="h-7 w-7 text-gray-800" />
               ) : (
-                <Menu className="h-6 w-6 text-gray-800" />
+                <Menu className="h-7 w-7 text-gray-800" />
               )}
             </button>
           </div>
 
+          {/* Mobile Navigation */}
           {menuOpen && (
             <div className="md:hidden bg-white shadow-lg border-t border-gray-100">
               <nav className="flex flex-col space-y-4 px-6 py-4 text-lg font-medium">
