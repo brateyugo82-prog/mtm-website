@@ -1,7 +1,19 @@
 import HeroSection from "../components/HeroSection";
 import TestimonialsSection from "../components/TestimonialsSection";
-import { TruckIcon, WrenchIcon, HomeModernIcon, TrashIcon, PhoneIcon, UserIcon, DocumentTextIcon, CalendarDaysIcon, CheckBadgeIcon } from "@heroicons/react/24/outline";
+import {
+  TruckIcon,
+  WrenchIcon,
+  HomeModernIcon,
+  TrashIcon,
+  PhoneIcon,
+  UserIcon,
+  DocumentTextIcon,
+  CalendarDaysIcon,
+  CheckBadgeIcon,
+} from "@heroicons/react/24/outline";
 import Link from "next/link";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
 
 export const metadata = {
   title: "MTM Möbel Transport Montage Hannover | Umzüge, Transport & Montage",
@@ -40,7 +52,15 @@ export const metadata = {
   },
 };
 
-export default function HomePage() {
+// ✅ Mobile-Redirect integriert
+export default async function HomePage() {
+  const userAgent = headers().get("user-agent") || "";
+  const isMobile = /iPhone|Android|Mobile/i.test(userAgent);
+
+  if (isMobile) {
+    redirect("/mobile");
+  }
+
   return (
     <main className="bg-gray-50">
       {/* HeroSection */}
@@ -136,10 +156,7 @@ export default function HomePage() {
           </div>
         </div>
         <div className="mt-10">
-          <Link
-            href="/ablauf"
-            className="text-red-600 font-semibold hover:underline"
-          >
+          <Link href="/ablauf" className="text-red-600 font-semibold hover:underline">
             Mehr erfahren
           </Link>
         </div>
