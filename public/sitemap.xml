@@ -1,19 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://mtm-service.de/</loc></url>
-  <url><loc>https://mtm-service.de/about</loc></url>
-  <url><loc>https://mtm-service.de/services</loc></url>
-  <url><loc>https://mtm-service.de/services/transport</loc></url>
-  <url><loc>https://mtm-service.de/services/montage</loc></url>
-  <url><loc>https://mtm-service.de/services/umzuege</loc></url>
-  <url><loc>https://mtm-service.de/services/entruempelung</loc></url>
-  <url><loc>https://mtm-service.de/ablauf</loc></url>
-  <url><loc>https://mtm-service.de/blog</loc></url>
-  <url><loc>https://mtm-service.de/blog/stressfreier-umzug</loc></url>
-  <url><loc>https://mtm-service.de/blog/moebel-schuetzen</loc></url>
-  <url><loc>https://mtm-service.de/blog/umzug-checkliste</loc></url>
-  <url><loc>https://mtm-service.de/contact</loc></url>
-  <url><loc>https://mtm-service.de/impressum</loc></url>
-  <url><loc>https://mtm-service.de/datenschutz</loc></url>
-  <url><loc>https://mtm-service.de/agb</loc></url>
-</urlset>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<sitemap><loc>https://mtm-service.de/sitemap-0.xml</loc></sitemap>
+<sitemap><loc>https://mtm-service.de/sitemap.xml</loc></sitemap>
+</sitemapindex>
