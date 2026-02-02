@@ -6,27 +6,27 @@ import { motion } from "framer-motion";
 
 export default function HeroSection() {
   return (
-    <section className="relative w-full bg-gray-900 text-white overflow-hidden">
+    <section className="relative w-full text-white overflow-hidden -mt-[72px]">
       {/* Background Image */}
-      <div className="relative w-full h-[100vh] md:h-[100vh]">
+      <div className="relative w-full h-[100vh]">
         <Image
           src="/flotte.png"
           alt="MTM Flotte – Umzugsfahrzeuge Hannover"
           fill
           priority
-          // 🔆 Bild leicht heller gemacht:
-          className="object-cover brightness-90 contrast-105"
           sizes="100vw"
+          quality={100}
+          className="object-cover brightness-100 contrast-110 saturate-105"
         />
       </div>
 
-      {/* Overlay Content */}
-      <div className="absolute inset-0 flex flex-col justify-end items-center text-center px-6 md:px-12 pb-[5vh] md:pb-[4vh] lg:pb-[3vh]">
-        {/* Hellerer Verlauf */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+      {/* Content Overlay */}
+      <div className="absolute inset-0 flex flex-col justify-end items-center text-center px-6 md:px-12 pb-[6vh]">
+        {/* Nur für Text – NICHT Ursache des Balkens */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-black/10 to-transparent" />
 
         <motion.h1
-          className="relative text-3xl sm:text-4xl md:text-6xl font-extrabold mb-4 drop-shadow-lg z-10"
+          className="relative text-3xl sm:text-4xl md:text-6xl font-extrabold mb-4 drop-shadow-md z-10"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -35,7 +35,7 @@ export default function HeroSection() {
         </motion.h1>
 
         <motion.p
-          className="relative text-base sm:text-lg md:text-xl text-gray-200 max-w-2xl mb-8 leading-relaxed z-10"
+          className="relative text-base sm:text-lg md:text-xl text-gray-100 max-w-2xl mb-8 leading-relaxed z-10 drop-shadow-sm"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.2 }}
@@ -64,9 +64,6 @@ export default function HeroSection() {
           </Link>
         </motion.div>
       </div>
-
-      {/* Bottom Fade Overlay */}
-      <div className="absolute bottom-0 w-full h-32 bg-gradient-to-t from-gray-900/70 to-transparent"></div>
     </section>
   );
 }

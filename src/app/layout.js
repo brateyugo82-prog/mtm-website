@@ -1,7 +1,7 @@
 import "./globals.css";
-import ResponsiveHeader from "../components/ResponsiveHeader";
-import Footer from "../components/Footer";
-import CookieBanner from "../components/CookieBanner";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import CookieBanner from "@/components/CookieBanner";
 
 export const metadata = {
   title: "MTM Möbel Transport Montage | Umzüge & Möbeltransporte Hannover",
@@ -40,9 +40,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="de">
-      <body className="flex flex-col min-h-screen bg-gray-50 text-gray-900">
-        <ResponsiveHeader />
-        <main className="flex-grow mt-[72px] md:mt-0">{children}</main>
+      <body className="flex min-h-screen flex-col bg-gray-50 text-gray-900">
+        <Header />
+
+        {/* ❗ KEIN globaler Offset */}
+        <main className="flex-grow">
+          {children}
+        </main>
+
         <Footer />
         <CookieBanner />
       </body>

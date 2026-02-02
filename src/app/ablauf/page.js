@@ -21,7 +21,7 @@ export default function AblaufPage() {
       {/* Header-Bild */}
       <section className="relative h-[300px] md:h-[400px]">
         <Image
-          src="/header-services.svg"
+          src="/header-services111.png"
           alt="MTM Ablauf"
           fill
           priority

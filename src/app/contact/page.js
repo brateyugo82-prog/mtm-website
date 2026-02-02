@@ -20,7 +20,7 @@ export default function ContactPage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
-        credentials: "include", // 👈 sorgt dafür, dass Cookies mitgeschickt werden
+        credentials: "include",
       });
 
       if (res.ok) {
@@ -29,121 +29,102 @@ export default function ContactPage() {
       } else {
         setStatus("error");
       }
-    } catch (error) {
-      console.error("Kontaktformular Fehler:", error);
+    } catch {
       setStatus("error");
     }
   }
 
   return (
-    <main className="bg-gray-50">
-      {/* Header-Bild (ohne Text im Bild) */}
-      <section className="relative h-[500px] md:h-[600px]">
-        <Image
-          src="/header-contact.svg"
-          alt="MTM Kontakt"
-          fill
-          priority
-          className="object-cover object-top brightness-75"
-        />
+    <main className="bg-white">
+      {/* Subpage Hero – KEIN Balken */}
+      <section className="relative h-[60vh] min-h-[420px] w-full overflow-hidden">
+       <Image
+        src="/header-contact.svg"
+        alt="MTM Kontakt"
+        fill
+        priority
+        sizes="100vw"
+        quality={100}
+        className="object-cover"
+        style={{ objectPosition: "50% 70%" }}
+      />
+
+        {/* sehr leichtes Overlay für Harmonie */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/5 to-black/15" />
       </section>
 
-      {/* Überschrift unter dem Bild */}
-      <div className="text-center py-12">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900">
-          Kontakt aufnehmen
-        </h1>
-      </div>
-
-      {/* Kontaktbereich */}
+      {/* Content */}
       <section className="py-24 px-6">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 bg-white shadow-lg rounded-2xl p-10">
-          {/* Firmeninfos */}
+        <div className="max-w-6xl mx-auto text-center mb-16">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">
+            Kontakt aufnehmen
+          </h1>
+          <p className="text-lg text-gray-600">
+            Wir beraten Sie gerne persönlich und unverbindlich.
+          </p>
+        </div>
+
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 bg-gray-50 rounded-2xl p-10 shadow-lg">
+          {/* Infos */}
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-gray-900">
+            <h2 className="text-3xl font-bold mb-8 text-gray-900">
               So erreichen Sie uns
             </h2>
             <p className="text-lg text-gray-600 mb-6">
-              Haben Sie Fragen oder möchten ein unverbindliches Angebot?
-              Unser Team hilft Ihnen gerne weiter.
+              Haben Sie Fragen oder möchten ein Angebot?
             </p>
+
             <ul className="space-y-4 text-gray-700">
               <li>
-                <span className="font-semibold text-red-600">Adresse:</span>
+                <span className="font-semibold text-red-600">Adresse</span>
                 <br />
                 Milchstraße 10, 30916 Isernhagen
               </li>
               <li>
-                <span className="font-semibold text-red-600">Telefon:</span>
+                <span className="font-semibold text-red-600">Telefon</span>
                 <br />
-                <Link href="tel:+4951160978240" className="hover:underline">
-                  0511 / 60978240
-                </Link>
+                <Link href="tel:+4951160978240">0511 / 60978240</Link>
               </li>
               <li>
-                <span className="font-semibold text-red-600">E-Mail:</span>
+                <span className="font-semibold text-red-600">E-Mail</span>
                 <br />
-                <Link
-                  href="mailto:info@mtm-service.de"
-                  className="hover:underline"
-                >
+                <Link href="mailto:info@mtm-service.de">
                   info@mtm-service.de
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Kontaktformular */}
+          {/* Formular */}
           <div>
             <h2 className="text-2xl font-semibold mb-6 text-gray-900">
               Schreiben Sie uns
             </h2>
+
             <form className="space-y-6" onSubmit={handleSubmit}>
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block text-left font-medium text-gray-700"
-                >
-                  Ihr Name
-                </label>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  required
-                  className="w-full mt-2 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-red-600 focus:outline-none text-black"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-left font-medium text-gray-700"
-                >
-                  Ihre E-Mail
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  className="w-full mt-2 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-red-600 focus:outline-none text-black"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-left font-medium text-gray-700"
-                >
-                  Ihre Nachricht
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="5"
-                  required
-                  className="w-full mt-2 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-red-600 focus:outline-none text-black"
-                ></textarea>
-              </div>
+              <input
+                name="name"
+                placeholder="Ihr Name"
+                required
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-red-600 text-black"
+              />
+
+              <input
+                name="email"
+                type="email"
+                placeholder="Ihre E-Mail"
+                required
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-red-600 text-black"
+              />
+
+              <textarea
+                name="message"
+                rows="5"
+                placeholder="Ihre Nachricht"
+                required
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-red-600 text-black"
+              />
+
               <button
                 type="submit"
                 className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 rounded-lg shadow-lg transition"
@@ -151,16 +132,14 @@ export default function ContactPage() {
                 Nachricht senden
               </button>
 
-              {/* Statusanzeige */}
               {status === "success" && (
                 <p className="text-green-600 mt-4">
-                  ✅ Ihre Nachricht wurde erfolgreich gesendet.
+                  ✅ Nachricht erfolgreich gesendet.
                 </p>
               )}
               {status === "error" && (
                 <p className="text-red-600 mt-4">
-                  ❌ Fehler beim Senden der Nachricht. Bitte versuchen Sie es
-                  erneut.
+                  ❌ Fehler beim Senden. Bitte erneut versuchen.
                 </p>
               )}
             </form>

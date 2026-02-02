@@ -35,7 +35,7 @@ export default function ServicesPage() {
       {/* Header-Bild */}
       <section className="relative h-[400px] md:h-[500px]">
         <Image
-          src="/header-services.svg"
+          src="/header-services.png"
           alt="MTM Leistungen"
           fill
           priority
@@ -70,7 +70,7 @@ export default function ServicesPage() {
             <p className="text-gray-700 leading-relaxed">
               Sicherer Möbeltransport in Hannover & Norddeutschland. Mit
               moderner Ausstattung, erfahrenem Team und höchster Sorgfalt
-              bringen wir Ihre Möbel termingerecht ans Ziel.
+              bringen wir Ihre Möbel termingerecht ans Ziel. Neben Möbeln transportieren wir auch Palettenware, Baustoffe, Haushaltsgeräte und sonstige Güter – sicher, termingerecht und fachgerecht gesichert.
             </p>
           </div>
           <div className="relative w-full h-64 md:h-80">
