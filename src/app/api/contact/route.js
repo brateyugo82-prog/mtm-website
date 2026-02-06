@@ -1,43 +1,55 @@
-import nodemailer from "nodemailer";
 import { cookies } from "next/headers";
+import { NextResponse } from "next/server";
+import nodemailer from "nodemailer";
+
+const transporter = nodemailer.createTransport({
+  host: process.env.SMTP_HOST,
+  port: Number(process.env.SMTP_PORT || 587),
+  secure: false,
+  auth: {
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASSWORD,
+  },
+});
 
 export async function POST(req) {
   try {
-    const data = await req.json();
+    // ✅ cookies() NUR HIER
+    const cookieStore = await cookies();
+    const alreadySubmitted = cookieStore.get("contact_submitted");
 
-    if (!data.name || !data.email || !data.message) {
-      return new Response(
-        JSON.stringify({ success: false, error: "Ungültige Eingabe" }),
+    if (alreadySubmitted) {
+      return NextResponse.json(
+        { success: false, error: "Bitte warte kurz vor einer neuen Anfrage." },
+        { status: 429 }
+      );
+    }
+
+    const { name, email, message } = await req.json();
+
+    if (!name || !email || !message) {
+      return NextResponse.json(
+        { success: false, error: "Ungültige Eingabe" },
         { status: 400 }
       );
     }
 
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: process.env.SMTP_PORT,
-      secure: false, // Office365 nutzt STARTTLS (587)
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASSWORD,
-      },
-      tls: { ciphers: "SSLv3" },
-    });
-
     await transporter.sendMail({
-      from: `"MTM Website" <${process.env.SMTP_USER}>`,
-      to: "info@mtm-service.de",
+      from: `"MTM Website" <${process.env.SMTP_FROM || process.env.SMTP_USER}>`,
+      to: process.env.SMTP_USER,
+      replyTo: email,
       subject: "Neue Kontaktanfrage über die MTM-Website",
       text: `
-Name: ${data.name}
-E-Mail: ${data.email}
+Name: ${name}
+E-Mail: ${email}
 
 Nachricht:
-${data.message}
-      `,
+${message}
+      `.trim(),
     });
 
-    // ✅ Cookie setzen für 10 Minuten
-    cookies().set({
+    // ✅ Cookie setzen – immer noch im Request
+    cookieStore.set({
       name: "contact_submitted",
       value: "true",
       httpOnly: true,
@@ -46,19 +58,21 @@ ${data.message}
       maxAge: 60 * 10,
     });
 
-    // ✅ Response inkl. Set-Cookie-Header
-    return new Response(JSON.stringify({ success: true }), {
-      status: 200,
-      headers: {
-        "Content-Type": "application/json",
-        "Set-Cookie": cookies().toString(),
-      },
+    console.log("📥 Lead received", {
+      client: "mtm_client",
+      source: "contact_form",
+      name,
+      email,
+      page: "/contact",
+      created_at: new Date().toISOString(),
     });
-  } catch (error) {
-    console.error("Mail Error:", error);
-    return new Response(
-      JSON.stringify({ success: false, error: error.message }),
-      { status: 500, headers: { "Content-Type": "application/json" } }
+
+    return NextResponse.json({ success: true });
+  } catch (err) {
+    console.error("❌ Contact API Error:", err);
+    return NextResponse.json(
+      { success: false, error: "Serverfehler" },
+      { status: 500 }
     );
   }
 }

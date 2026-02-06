@@ -1,20 +1,30 @@
 "use client";
-import { useState, useEffect } from "react";
+
+import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
+import { pageview } from "@/lib/metaPixel";
 
 export default function CookieBanner() {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(null);
 
   useEffect(() => {
     const consent = Cookies.get("cookie-consent");
+
     if (!consent) {
       setVisible(true);
+    } else {
+      setVisible(false);
+
+      if (consent === "accepted") {
+        pageview(); // 🔥 PageView NACH Consent (auch bei Reload)
+      }
     }
   }, []);
 
   const acceptCookies = () => {
     Cookies.set("cookie-consent", "accepted", { expires: 365 });
     setVisible(false);
+    pageview(); // 🔥 DAS ist der entscheidende Call
   };
 
   const declineCookies = () => {
@@ -22,10 +32,12 @@ export default function CookieBanner() {
     setVisible(false);
   };
 
+  // ⛔ Noch kein Entscheid → nichts rendern
+  if (visible === null) return null;
   if (!visible) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 w-full bg-gray-900 text-white px-6 py-4 flex flex-col sm:flex-row justify-between items-center z-50 shadow-lg">
+    <div className="fixed bottom-0 left-0 w-full bg-gray-900 text-white px-6 py-4 flex flex-col sm:flex-row justify-between items-center z-[9999] shadow-lg">
       <p className="mb-2 sm:mb-0 text-sm">
         Diese Website verwendet Cookies, um Ihr Erlebnis zu verbessern.
         Mehr dazu in unserer{" "}
@@ -33,6 +45,7 @@ export default function CookieBanner() {
           Datenschutzerklärung
         </a>.
       </p>
+
       <div className="flex gap-2">
         <button
           onClick={declineCookies}
@@ -40,6 +53,7 @@ export default function CookieBanner() {
         >
           Ablehnen
         </button>
+
         <button
           onClick={acceptCookies}
           className="px-4 py-2 bg-red-600 rounded-lg hover:bg-red-700 text-sm"

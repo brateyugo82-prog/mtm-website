@@ -1,18 +1,37 @@
 "use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 
+/**
+ * MVP Lead Tracker (Frontend)
+ * → aktuell nur Console / später Meta Pixel + CAPI
+ */
+function trackLead({ source, page, name, email }) {
+  console.log("📩 Lead tracked", {
+    source,
+    page,
+    name,
+    email,
+    ts: new Date().toISOString(),
+  });
+}
+
 export default function ContactPage() {
   const [status, setStatus] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
+    setLoading(true);
+
+    const form = e.currentTarget;
 
     const formData = {
-      name: e.target.name.value,
-      email: e.target.email.value,
-      message: e.target.message.value,
+      name: form.elements.name.value,
+      email: form.elements.email.value,
+      message: form.elements.message.value,
     };
 
     try {
@@ -24,32 +43,41 @@ export default function ContactPage() {
       });
 
       if (res.ok) {
+        // ✅ LEAD TRACKING – HIER IST ES RICHTIG
+        trackLead({
+          source: "contact_form",
+          page: "/contact",
+          name: formData.name,
+          email: formData.email,
+        });
+
         setStatus("success");
-        e.target.reset();
+        form.reset();
       } else {
         setStatus("error");
       }
-    } catch {
+    } catch (err) {
+      console.error(err);
       setStatus("error");
+    } finally {
+      setLoading(false);
     }
   }
 
   return (
     <main className="bg-white">
-      {/* Subpage Hero – KEIN Balken */}
+      {/* Hero */}
       <section className="relative h-[60vh] min-h-[420px] w-full overflow-hidden">
-       <Image
-        src="/header-contact.svg"
-        alt="MTM Kontakt"
-        fill
-        priority
-        sizes="100vw"
-        quality={100}
-        className="object-cover"
-        style={{ objectPosition: "50% 70%" }}
-      />
-
-        {/* sehr leichtes Overlay für Harmonie */}
+        <Image
+          src="/header-contact.svg"
+          alt="MTM Kontakt"
+          fill
+          priority
+          sizes="100vw"
+          quality={100}
+          className="object-cover"
+          style={{ objectPosition: "50% 70%" }}
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/5 to-black/15" />
       </section>
 
@@ -70,27 +98,19 @@ export default function ContactPage() {
             <h2 className="text-3xl font-bold mb-8 text-gray-900">
               So erreichen Sie uns
             </h2>
-            <p className="text-lg text-gray-600 mb-6">
-              Haben Sie Fragen oder möchten ein Angebot?
-            </p>
 
             <ul className="space-y-4 text-gray-700">
               <li>
-                <span className="font-semibold text-red-600">Adresse</span>
-                <br />
+                <span className="font-semibold text-red-600">Adresse</span><br />
                 Milchstraße 10, 30916 Isernhagen
               </li>
               <li>
-                <span className="font-semibold text-red-600">Telefon</span>
-                <br />
+                <span className="font-semibold text-red-600">Telefon</span><br />
                 <Link href="tel:+4951160978240">0511 / 60978240</Link>
               </li>
               <li>
-                <span className="font-semibold text-red-600">E-Mail</span>
-                <br />
-                <Link href="mailto:info@mtm-service.de">
-                  info@mtm-service.de
-                </Link>
+                <span className="font-semibold text-red-600">E-Mail</span><br />
+                <Link href="mailto:info@mtm-service.de">info@mtm-service.de</Link>
               </li>
             </ul>
           </div>
@@ -102,45 +122,27 @@ export default function ContactPage() {
             </h2>
 
             <form className="space-y-6" onSubmit={handleSubmit}>
-              <input
-                name="name"
-                placeholder="Ihr Name"
-                required
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-red-600 text-black"
-              />
+              <input name="name" required placeholder="Ihr Name"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 text-black" />
 
-              <input
-                name="email"
-                type="email"
-                placeholder="Ihre E-Mail"
-                required
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-red-600 text-black"
-              />
+              <input name="email" type="email" required placeholder="Ihre E-Mail"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 text-black" />
 
-              <textarea
-                name="message"
-                rows="5"
-                placeholder="Ihre Nachricht"
-                required
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-red-600 text-black"
-              />
+              <textarea name="message" rows="5" required placeholder="Ihre Nachricht"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 text-black" />
 
               <button
-                type="submit"
-                className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 rounded-lg shadow-lg transition"
+                disabled={loading}
+                className="w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded-lg"
               >
-                Nachricht senden
+                {loading ? "Senden…" : "Nachricht senden"}
               </button>
 
               {status === "success" && (
-                <p className="text-green-600 mt-4">
-                  ✅ Nachricht erfolgreich gesendet.
-                </p>
+                <p className="text-green-600">✅ Nachricht gesendet.</p>
               )}
               {status === "error" && (
-                <p className="text-red-600 mt-4">
-                  ❌ Fehler beim Senden. Bitte erneut versuchen.
-                </p>
+                <p className="text-red-600">❌ Fehler beim Senden.</p>
               )}
             </form>
           </div>
