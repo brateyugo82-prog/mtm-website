@@ -16,7 +16,7 @@ export default function CookieBanner() {
       setVisible(false);
 
       if (consent === "accepted") {
-        trackPageView(); // ✅ PageView bei Reload
+        trackPageView(); // ✅ Reload
       }
     }
   }, []);
@@ -24,7 +24,7 @@ export default function CookieBanner() {
   const acceptCookies = () => {
     Cookies.set("cookie-consent", "accepted", { expires: 365 });
     setVisible(false);
-    trackPageView(); // ✅ EINMAL, sauber
+    trackPageView(); // ✅ EINMAL
   };
 
   const declineCookies = () => {
@@ -32,30 +32,22 @@ export default function CookieBanner() {
     setVisible(false);
   };
 
-  if (visible === null || !visible) return null;
+  if (visible !== true) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 w-full bg-gray-900 text-white px-6 py-4 flex flex-col sm:flex-row justify-between items-center z-[9999] shadow-lg">
-      <p className="mb-2 sm:mb-0 text-sm">
-        Diese Website verwendet Cookies, um Ihr Erlebnis zu verbessern.
-        Mehr dazu in unserer{" "}
+    <div className="fixed bottom-0 left-0 w-full bg-gray-900 text-white px-6 py-4 z-[9999]">
+      <p className="text-sm mb-2">
+        Diese Website verwendet Cookies.{" "}
         <a href="/datenschutz" className="underline text-red-400">
           Datenschutzerklärung
-        </a>.
+        </a>
       </p>
 
       <div className="flex gap-2">
-        <button
-          onClick={declineCookies}
-          className="px-4 py-2 bg-gray-600 rounded-lg hover:bg-gray-700 text-sm"
-        >
+        <button onClick={declineCookies} className="bg-gray-600 px-4 py-2 rounded">
           Ablehnen
         </button>
-
-        <button
-          onClick={acceptCookies}
-          className="px-4 py-2 bg-red-600 rounded-lg hover:bg-red-700 text-sm"
-        >
+        <button onClick={acceptCookies} className="bg-red-600 px-4 py-2 rounded">
           Akzeptieren
         </button>
       </div>

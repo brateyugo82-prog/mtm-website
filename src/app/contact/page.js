@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+import Cookies from "js-cookie";
 import { trackLead } from "@/lib/metaPixel";
 
 export default function ContactPage() {
@@ -11,7 +12,10 @@ export default function ContactPage() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    if (loading) return;
+
     setLoading(true);
+    setStatus(null);
 
     const form = e.currentTarget;
 
@@ -30,12 +34,20 @@ export default function ContactPage() {
       });
 
       if (res.ok) {
-        // 🔥 LEAD EVENT – SAUBER
-        trackLead({
-          content_name: "Kontaktformular",
-          content_category: "Lead",
-          page: "/contact",
-        });
+        const consent = Cookies.get("cookie-consent");
+
+        // 🔥 META LEAD – NUR MIT CONSENT
+        if (consent === "accepted") {
+          trackLead({
+            content_name: "Kontaktformular",
+            content_category: "Lead",
+            page: "/contact",
+          });
+
+          console.log("🎯 Lead Event ausgelöst (Kontaktformular)");
+        } else {
+          console.log("ℹ️ Lead nicht getrackt (kein Consent)");
+        }
 
         setStatus("success");
         form.reset();
@@ -43,7 +55,7 @@ export default function ContactPage() {
         setStatus("error");
       }
     } catch (err) {
-      console.error(err);
+      console.error("❌ Kontaktformular Fehler", err);
       setStatus("error");
     } finally {
       setLoading(false);
