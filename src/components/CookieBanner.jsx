@@ -2,22 +2,10 @@
 
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
+import { pageview } from "@/lib/metaPixel";
 
 export default function CookieBanner() {
   const [visible, setVisible] = useState(null);
-
-  const enableMarketing = () => {
-    if (typeof window === "undefined") return;
-    if (!window.fbq || !window.__META_PIXEL_ID__) return;
-
-    // 🔥 Pixel INITIALISIEREN (nur einmal)
-    window.fbq("init", window.__META_PIXEL_ID__);
-
-    // 🔥 Pflicht-Event
-    window.fbq("track", "PageView");
-
-    console.log("🔥 Meta Pixel aktiviert + PageView gesendet");
-  };
 
   useEffect(() => {
     const consent = Cookies.get("cookie-consent");
@@ -26,9 +14,8 @@ export default function CookieBanner() {
       setVisible(true);
     } else {
       setVisible(false);
-
       if (consent === "accepted") {
-        enableMarketing(); // 🔥 wichtig bei Reload
+        pageview(); // 🔥 PageView bei Reload
       }
     }
   }, []);
@@ -36,7 +23,7 @@ export default function CookieBanner() {
   const acceptCookies = () => {
     Cookies.set("cookie-consent", "accepted", { expires: 365 });
     setVisible(false);
-    enableMarketing(); // 🔥 EINZIGE Stelle für Events
+    pageview(); // 🔥 EINZIGER Event-Call
   };
 
   const declineCookies = () => {
