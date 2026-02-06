@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
-import { pageview } from "@/lib/metaPixel";
+import { trackPageView } from "@/lib/metaPixel";
 
 export default function CookieBanner() {
   const [visible, setVisible] = useState(null);
@@ -14,8 +14,9 @@ export default function CookieBanner() {
       setVisible(true);
     } else {
       setVisible(false);
+
       if (consent === "accepted") {
-        pageview(); // 🔥 PageView bei Reload
+        trackPageView(); // ✅ PageView bei Reload
       }
     }
   }, []);
@@ -23,7 +24,7 @@ export default function CookieBanner() {
   const acceptCookies = () => {
     Cookies.set("cookie-consent", "accepted", { expires: 365 });
     setVisible(false);
-    pageview(); // 🔥 EINZIGER Event-Call
+    trackPageView(); // ✅ EINMAL, sauber
   };
 
   const declineCookies = () => {

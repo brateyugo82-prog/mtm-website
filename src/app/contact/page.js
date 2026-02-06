@@ -3,20 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-
-/**
- * MVP Lead Tracker (Frontend)
- * → aktuell nur Console / später Meta Pixel + CAPI
- */
-function trackLead({ source, page, name, email }) {
-  console.log("📩 Lead tracked", {
-    source,
-    page,
-    name,
-    email,
-    ts: new Date().toISOString(),
-  });
-}
+import { trackLead } from "@/lib/metaPixel";
 
 export default function ContactPage() {
   const [status, setStatus] = useState(null);
@@ -43,12 +30,11 @@ export default function ContactPage() {
       });
 
       if (res.ok) {
-        // ✅ LEAD TRACKING – HIER IST ES RICHTIG
+        // 🔥 LEAD EVENT – SAUBER
         trackLead({
-          source: "contact_form",
+          content_name: "Kontaktformular",
+          content_category: "Lead",
           page: "/contact",
-          name: formData.name,
-          email: formData.email,
         });
 
         setStatus("success");
@@ -122,14 +108,28 @@ export default function ContactPage() {
             </h2>
 
             <form className="space-y-6" onSubmit={handleSubmit}>
-              <input name="name" required placeholder="Ihr Name"
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 text-black" />
+              <input
+                name="name"
+                required
+                placeholder="Ihr Name"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 text-black"
+              />
 
-              <input name="email" type="email" required placeholder="Ihre E-Mail"
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 text-black" />
+              <input
+                name="email"
+                type="email"
+                required
+                placeholder="Ihre E-Mail"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 text-black"
+              />
 
-              <textarea name="message" rows="5" required placeholder="Ihre Nachricht"
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 text-black" />
+              <textarea
+                name="message"
+                rows="5"
+                required
+                placeholder="Ihre Nachricht"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 text-black"
+              />
 
               <button
                 disabled={loading}
