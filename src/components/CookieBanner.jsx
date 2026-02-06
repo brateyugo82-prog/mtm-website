@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 
 export default function CookieBanner() {
-  const [visible, setVisible] = useState<boolean | null>(null);
+  const [visible, setVisible] = useState(null);
 
   const enableMarketing = () => {
     if (typeof window === "undefined") return;
