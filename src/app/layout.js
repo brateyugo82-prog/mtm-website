@@ -10,7 +10,6 @@ export const metadata = {
   description:
     "Professionelle Möbeltransporte, Umzüge, Montage & Entrümpelung in Hannover. MTM – zuverlässig, effizient und fair.",
 
-  // ✅ HIER ist der richtige Platz
   other: {
     "facebook-domain-verification": "jg7kfr7cldzs99uhlb8r0ioxaxzc3c",
     "tiktok-developers-site-verification":
@@ -49,13 +48,11 @@ export default function RootLayout({ children }) {
     <html lang="de">
       <body className="flex min-h-screen flex-col bg-gray-50 text-gray-900">
         <Header />
-
         <main className="flex-grow">{children}</main>
-
         <Footer />
         <CookieBanner />
 
-        {/* 🔥 Meta Pixel – Basis (Events feuern wir NACH Consent) */}
+        {/* 🔥 Meta Pixel – NUR laden, KEINE Events */}
         <Script
           id="meta-pixel-base"
           strategy="afterInteractive"
@@ -70,7 +67,7 @@ export default function RootLayout({ children }) {
               s.parentNode.insertBefore(t,s)}(window, document,'script',
               'https://connect.facebook.net/en_US/fbevents.js');
 
-              fbq('init', '${META_PIXEL_ID}');
+              window.__META_PIXEL_ID__ = '${META_PIXEL_ID}';
             `,
           }}
         />
